@@ -1,0 +1,23 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst nios_accelerometer_inst.timer -pg 1 -lvl 3 -y 250
+preplace inst nios_accelerometer_inst.led -pg 1 -lvl 3 -y 350
+preplace inst nios_accelerometer_inst.accelerometer_spi -pg 1 -lvl 3 -y 30
+preplace inst nios_accelerometer_inst.cpu.reset_bridge -pg 1
+preplace inst nios_accelerometer_inst.cpu.clock_bridge -pg 1
+preplace inst nios_accelerometer_inst -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst nios_accelerometer_inst.onchip_memory -pg 1 -lvl 3 -y 450
+preplace inst nios_accelerometer_inst.jtag_uart -pg 1 -lvl 3 -y 150
+preplace inst nios_accelerometer_inst.cpu -pg 1 -lvl 2 -y 430
+preplace inst nios_accelerometer_inst.clk -pg 1 -lvl 1 -y 450
+preplace inst nios_accelerometer_inst.cpu.cpu -pg 1
+preplace netloc FAN_OUT<net_container>nios_accelerometer_inst</net_container>(SLAVE)onchip_memory.clk1,(SLAVE)timer.clk,(SLAVE)accelerometer_spi.clk,(SLAVE)cpu.clk,(SLAVE)jtag_uart.clk,(SLAVE)led.clk,(MASTER)clk.clk) 1 1 2 410 370 850
+preplace netloc EXPORT<net_container>nios_accelerometer_inst</net_container>(SLAVE)clk.clk_in_reset,(SLAVE)nios_accelerometer_inst.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>nios_accelerometer_inst</net_container>(SLAVE)nios_accelerometer_inst.led_external_connection,(SLAVE)led.external_connection) 1 0 3 NJ 350 NJ 350 NJ
+preplace netloc FAN_OUT<net_container>nios_accelerometer_inst</net_container>(SLAVE)accelerometer_spi.reset,(SLAVE)cpu.reset,(SLAVE)jtag_uart.reset,(MASTER)clk.clk_reset,(SLAVE)onchip_memory.reset1,(SLAVE)led.reset,(SLAVE)timer.reset) 1 1 2 410 570 870
+preplace netloc INTERCONNECT<net_container>nios_accelerometer_inst</net_container>(MASTER)cpu.data_master,(SLAVE)onchip_memory.s1,(SLAVE)led.s1,(MASTER)cpu.instruction_master,(SLAVE)timer.s1,(SLAVE)accelerometer_spi.avalon_accelerometer_spi_mode_slave,(SLAVE)cpu.debug_mem_slave,(SLAVE)jtag_uart.avalon_jtag_slave) 1 1 2 430 390 790
+preplace netloc EXPORT<net_container>nios_accelerometer_inst</net_container>(SLAVE)nios_accelerometer_inst.clk,(SLAVE)clk.clk_in) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>nios_accelerometer_inst</net_container>(SLAVE)jtag_uart.irq,(MASTER)cpu.irq,(SLAVE)timer.irq,(SLAVE)accelerometer_spi.interrupt) 1 2 1 810
+preplace netloc EXPORT<net_container>nios_accelerometer_inst</net_container>(SLAVE)nios_accelerometer_inst.accelerometer_spi_external_interface,(SLAVE)accelerometer_spi.external_interface) 1 0 3 NJ 80 NJ 80 NJ
+levelinfo -pg 1 0 200 1170
+levelinfo -hier nios_accelerometer_inst 210 240 550 910 1160
